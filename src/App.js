@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
+import Home from "./components/HomePage";
+import ClipboardPage from "./components/ClipboardPage"; // Edit Page
+import ClipboardView from "./components/ClipboardView"; // View Page
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/edit/:clipboardId" element={<ClipboardPage />} />
+        <Route path="/view/:clipboardId" element={<ClipboardView />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
